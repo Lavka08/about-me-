@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Глеб</title>
+<meta name="description" content="Глеб — ученик 12 класса. Учусь, работаю и строю свой путь к финансовой свободе.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0e11;
+    --bg-card: #13161b;
+    --line: #23272e;
+    --text: #e8e6e1;
+    --muted: #8b8f97;
+    --accent: #c9a86a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .chart {
+    position: absolute;
+    inset: auto 0 0 0;
+    width: 100%;
+    height: 55%;
+    opacity: .5;
+    pointer-events: none;
+  }
+  .chart path.line {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-dasharray: 2400;
+    stroke-dashoffset: 2400;
+    animation: draw 3.5s ease-out .4s forwards;
+  }
+  .chart path.area { fill: url(#fade); opacity: 0; animation: show 2s ease 2.5s forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes show { to { opacity: 1; } }
+
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(64px, 14vw, 140px);
+    font-weight: 800;
+    line-height: .95;
+    letter-spacing: -.03em;
+  }
+  .lead {
+    margin-top: 28px;
+    max-width: 520px;
+    font-size: clamp(17px, 2.2vw, 20px);
+    font-weight: 300;
+    color: var(--muted);
+  }
+  .lead strong { color: var(--text); font-weight: 600; }
+  .scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 24px;
+    font-size: 12px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .scroll:hover { color: var(--accent); }
+
+  .fade-in { opacity: 0; transform: translateY(16px); animation: rise .9s ease forwards; }
+  .d1 { animation-delay: .1s; } .d2 { animation-delay: .3s; } .d3 { animation-delay: .5s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* Sections */
+  section { padding: 110px 0; border-top: 1px solid var(--line); }
+  h2 {
+    font-size: 13px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+  .about p {
+    font-size: clamp(22px, 3.4vw, 32px);
+    font-weight: 300;
+    line-height: 1.45;
+    max-width: 760px;
+  }
+  .about p em { font-style: normal; color: var(--accent); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .card {
+    background: var(--bg-card);
+    padding: 36px 30px;
+    transition: background .3s;
+  }
+  .card:hover { background: #171b21; }
+  .num {
+    font-size: 13px;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 18px;
+  }
+  .card h3 { font-size: 22px; font-weight: 600; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: 15px; }
+
+  .motto {
+    text-align: center;
+  }
+  .motto blockquote {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .motto blockquote span { color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 0;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  @media (max-width: 600px) {
+    section { padding: 80px 0; }
+    .card { padding: 30px 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+    .fade-in { opacity: 1; transform: none; }
+    .chart path.line { stroke-dashoffset: 0; }
+    .chart path.area { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <svg class="chart" viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#c9a86a" stop-opacity=".18"/>
+        <stop offset="100%" stop-color="#c9a86a" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path class="area" d="M0,370 L80,355 L160,362 L240,330 L320,340 L400,300 L480,312 L560,270 L640,280 L720,230 L800,245 L880,190 L960,200 L1040,140 L1120,120 L1200,60 L1200,400 L0,400 Z"/>
+    <path class="line" d="M0,370 L80,355 L160,362 L240,330 L320,340 L400,300 L480,312 L560,270 L640,280 L720,230 L800,245 L880,190 L960,200 L1040,140 L1120,120 L1200,60"/>
+  </svg>
+
+  <div class="wrap">
+    <p class="eyebrow fade-in d1">Обо мне</p>
+    <h1 class="fade-in d2">Глеб</h1>
+    <p class="lead fade-in d3">Ученик <strong>12 класса</strong>. Учусь, работаю и шаг за шагом строю свой путь к <strong>финансовой свободе</strong>.</p>
+  </div>
+  <a href="#about" class="scroll">↓ Листать</a>
+</header>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <h2>Кто я</h2>
+    <p>Мне интересно всё, что связано с <em>деньгами</em>: как их зарабатывать, приумножать и разумно ими управлять. Совмещаю учёбу в школе с работой, потому что привык не ждать, а действовать.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Чем я занимаюсь</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>Учусь</h3>
+        <p>Заканчиваю 12 класс и готовлюсь к следующему этапу жизни.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>Работаю</h3>
+        <p>Уже сейчас зарабатываю сам и получаю реальный опыт.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>Изучаю финансы</h3>
+        <p>Разбираюсь в том, как устроены деньги, бизнес и заработок.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="motto">
+  <div class="wrap">
+    <h2>Мой подход</h2>
+    <blockquote>Трудолюбие — <span>мой главный капитал.</span></blockquote>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Глеб</span>
+    <span>Сделано с помощью Claude</span>
+  </div>
+</footer>
+
+</body>
+</html>
